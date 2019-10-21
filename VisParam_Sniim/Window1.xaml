@@ -38,7 +38,7 @@
         <StackPanel HorizontalAlignment="Left" Grid.Row="1" Orientation="Vertical">
             <Label x:Name="label1" Content="Radius" />
             <Label x:Name="label2" Content="Dielectric_constant" />
-            <Label x:Name="label3" Content="Theoretical_polarization_PEWPEWPEW" />
+            <Label x:Name="label3" Content="Theoretical_polarization" />
             <Label x:Name="label4" Content="Measured_speed" />
             <Label x:Name="label5" Content="Measured_polarization" />
          
