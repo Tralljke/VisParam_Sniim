@@ -44,7 +44,7 @@ namespace VisParam_Sniim
                 adapter.InsertCommand = new SqlCommand("InsertValue", connection);
                 connection.Open();
                 adapter.Fill(VisParam);
-                phonesGrid.ItemsSource = VisParam.DefaultView;
+                ValuesGrid.ItemsSource = VisParam.DefaultView;
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace VisParam_Sniim
             }
         }
 
-        private void UpdateDB()
+        public void UpdateDB()
         {
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
             adapter.Update(VisParam);
@@ -72,11 +72,11 @@ namespace VisParam_Sniim
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (phonesGrid.SelectedItems != null)
+            if (ValuesGrid.SelectedItems != null)
             {
-                for (int i = 0; i < phonesGrid.SelectedItems.Count; i++)
+                for (int i = 0; i < ValuesGrid.SelectedItems.Count; i++)
                 {
-                    DataRowView datarowView = phonesGrid.SelectedItems[i] as DataRowView;
+                    DataRowView datarowView = ValuesGrid.SelectedItems[i] as DataRowView;
                     if (datarowView != null)
                     {
                         DataRow dataRow = (DataRow)datarowView.Row;

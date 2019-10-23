@@ -27,6 +27,7 @@
         <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="Add1" Content="Add" Click="Add1_Click"/>
             <Button x:Name="Add2" Content="Cancel" Click="Add2_Click"/>
+            <Button x:Name="Add3" Content="Add Random" Click="Add3_Click"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical">
             <TextBox x:Name="TextBox1" />
@@ -41,7 +42,6 @@
             <Label x:Name="label3" Content="Theoretical_polarization" />
             <Label x:Name="label4" Content="Measured_speed" />
             <Label x:Name="label5" Content="Measured_polarization" />
-         
         </StackPanel>
     </Grid>
 </Window>
