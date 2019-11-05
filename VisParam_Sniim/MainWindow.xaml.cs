@@ -42,6 +42,7 @@ namespace VisParam_Sniim
                 SqlCommand command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
                 adapter.InsertCommand = new SqlCommand("InsertValue", connection);
+                //adapter.DeleteCommand = new SqlCommand();
                 connection.Open();
                 adapter.Fill(VisParam);
                 ValuesGrid.ItemsSource = VisParam.DefaultView;
@@ -72,18 +73,9 @@ namespace VisParam_Sniim
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ValuesGrid.SelectedItems != null)
-            {
-                for (int i = 0; i < ValuesGrid.SelectedItems.Count; i++)
-                {
-                    DataRowView datarowView = ValuesGrid.SelectedItems[i] as DataRowView;
-                    if (datarowView != null)
-                    {
-                        DataRow dataRow = (DataRow)datarowView.Row;
-                        dataRow.Delete();
-                    }
-                }
-            }
+            
+                
+            
             UpdateDB();
         }
 
