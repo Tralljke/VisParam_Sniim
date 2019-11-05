@@ -24,14 +24,10 @@ namespace VisParam_Sniim
     public partial class Window1 : Window
     {
         string connectionString;
-        
-
         public Window1()
         {
-           
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
         }
 
         private void Window_Loaded1(object sender, RoutedEventArgs e)
@@ -79,34 +75,43 @@ namespace VisParam_Sniim
         private void Add3_Click(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
-            for (int i = 0; i < 10; i++)
+            try
             {
-                SqlConnection con1 = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("dbo.InsertValue", con1);
-            
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@radius", rand.Next(-100, 100));
-                cmd.Parameters.AddWithValue("@dielectric_constant", rand.Next(-100, 100));
-                cmd.Parameters.AddWithValue("@theoretical_polarization", rand.Next(-100, 100));
-                cmd.Parameters.AddWithValue("@measured_speed", rand.Next(-100, 100));
-                cmd.Parameters.AddWithValue("@measured_polarization", rand.Next(-100, 100));
+                for (int i = 0; i < 10; i++)
+                {
+                    SqlConnection con1 = new SqlConnection(connectionString);
+                    SqlCommand cmd = new SqlCommand("dbo.InsertValue", con1);
 
-                con1.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con1.Close();
-                }
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@radius", (rand.NextDouble() * 0.00000060 + 0.0000309));
+                    cmd.Parameters.AddWithValue("@dielectric_constant", (rand.NextDouble() * 0.015 + 20.08));
+                    cmd.Parameters.AddWithValue("@theoretical_polarization", (rand.NextDouble() * 1.12E-15 + 7.92E-15));
+                    cmd.Parameters.AddWithValue("@measured_speed", (rand.NextDouble() * 1.383E-05 + 1.22E-05));
+                    cmd.Parameters.AddWithValue("@measured_polarization", (rand.NextDouble() * 0.15E-15 + 9.97E-15));
 
+                    con1.Open();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        con1.Close();
+                    }
+
+                }
             }
-            
+            catch (Exception idk) {
+                MessageBox.Show(idk.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Значения успешно добавлены");
+            }
         }
     }
 
