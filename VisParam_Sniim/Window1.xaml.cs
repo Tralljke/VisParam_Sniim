@@ -45,7 +45,7 @@ namespace VisParam_Sniim
             cmd.Parameters.AddWithValue("@theoretical_polarization", TextBox3.Text);
             cmd.Parameters.AddWithValue("@measured_speed", TextBox4.Text);
             cmd.Parameters.AddWithValue("@measured_polarization", TextBox5.Text);
-          
+
             con1.Open();
             try
             {
@@ -59,8 +59,6 @@ namespace VisParam_Sniim
             finally
             {
                 this.Close();
-              
-
             }
       
             con1.Close();
@@ -88,7 +86,6 @@ namespace VisParam_Sniim
                     cmd.Parameters.AddWithValue("@theoretical_polarization", (rand.NextDouble() * 1.12E-15 + 7.92E-15));
                     cmd.Parameters.AddWithValue("@measured_speed", (rand.NextDouble() * 1.383E-05 + 1.22E-05));
                     cmd.Parameters.AddWithValue("@measured_polarization", (rand.NextDouble() * 0.15E-15 + 9.97E-15));
-
                     con1.Open();
                     try
                     {
@@ -102,16 +99,13 @@ namespace VisParam_Sniim
                     {
                         con1.Close();
                     }
-
+                    MessageBox.Show("Значения успешно добавлены");
                 }
             }
             catch (Exception idk) {
                 MessageBox.Show(idk.Message);
             }
-            finally
-            {
-                MessageBox.Show("Значения успешно добавлены");
-            }
+            
         }
     }
 

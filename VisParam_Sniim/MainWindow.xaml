@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="600" Loaded="Window_Loaded">
+        Title="MainWindow" Height="400" Width="750" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
@@ -18,7 +18,15 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="True" x:Name="ValuesGrid" IsReadOnly="True" >
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,3,0,0" FontSize="14">
+          <DataGrid.Columns>
+            <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding id}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Диэлектрическая &#10; постоянная"  MinWidth="120" Width="*" Binding="{Binding dielectric_constant}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Теоретическая &#10; поляризация"  MinWidth="120" Width="*" Binding="{Binding theoretical_polarization}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Измеренная &#10; скорость"  MinWidth="120" Width="*" Binding="{Binding measured_speed}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Измеренная &#10; поляризация"  MinWidth="120" Width="*" Binding="{Binding measured_polarization}" ClipboardContentBinding="{x:Null}"/>
+          </DataGrid.Columns>          
            
         </DataGrid>
 

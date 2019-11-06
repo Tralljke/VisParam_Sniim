@@ -36,16 +36,36 @@ namespace VisParam_Sniim
             string sql = "SELECT * FROM Viscoelastic_param_table";
             VisParam = new DataTable();
             SqlConnection connection = null;
+
+            // conn.Open();
+            // SqlDataAdapter rdr = new SqlDataAdapter("Select * from Employees", conn);
+            // SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(command);
+            // SqlCommand cmd = new SqlCommand("delete from Viscoelastic_param_table where id=@id", command.SelectCommand.connection);
+            // cmd.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+            // cmd.Parameters["id"].SourceVersion = DataRowVersion.Original;
+            // cmd.Parameters["id"].SourceColumn = "id";
+            // rdr.DeleteCommand = cmd;
+            // rdr.Fill(dataset, "mydata")
+            // Console.WriteLine(cmdBuilder.GetDeleteCommand().CommandText);
+            // foreach (DataRow row in dataset.Tables.Rows)
+            // {
+            // row.Delete();
+            // }
+            //           UpdateDB();
+            //        
+
             try
             {
                 connection = new SqlConnection(connectionString);
                 SqlCommand command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
                 adapter.InsertCommand = new SqlCommand("InsertValue", connection);
-                //adapter.DeleteCommand = new SqlCommand();
+                adapter.DeleteCommand = new SqlCommand("DELETE * FROM Viscoelastic_param_table WHERE id = @id", connection);
                 connection.Open();
                 adapter.Fill(VisParam);
                 ValuesGrid.ItemsSource = VisParam.DefaultView;
+                
+                
             }
             catch (Exception ex)
             {
@@ -73,9 +93,27 @@ namespace VisParam_Sniim
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            
-                
-            
+            // SqlDataAdapter rdr = new SqlDataAdapter("Select * from Employees", conn);
+            SqlConnection con1 = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("delete from Viscoelastic_param_table where id=@id", con1);
+            cmd.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+            cmd.Parameters["id"].SourceVersion = DataRowVersion.Original;
+            cmd.Parameters["id"].SourceColumn = "id";
+
+            con1.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con1.Close();
+            }
             UpdateDB();
         }
 
