@@ -99,8 +99,9 @@ namespace VisParam_Sniim
                     {
                         con1.Close();
                     }
-                    MessageBox.Show("Значения успешно добавлены");
+                    
                 }
+                MessageBox.Show("Значения успешно добавлены");
             }
             catch (Exception idk) {
                 MessageBox.Show(idk.Message);

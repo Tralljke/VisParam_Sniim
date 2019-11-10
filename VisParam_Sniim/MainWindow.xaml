@@ -18,9 +18,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,3,0,0" FontSize="14">
+        <DataGrid ItemsSource="{Binding}" SelectionChanged="SelectionChanged" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,3,0,0" FontSize="14">
           <DataGrid.Columns>
-            <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding id}" ClipboardContentBinding="{x:Null}"/>
+            <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
             <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
             <DataGridTextColumn  Header="Диэлектрическая &#10; постоянная"  MinWidth="120" Width="*" Binding="{Binding dielectric_constant}" ClipboardContentBinding="{x:Null}"/>
             <DataGridTextColumn  Header="Теоретическая &#10; поляризация"  MinWidth="120" Width="*" Binding="{Binding theoretical_polarization}" ClipboardContentBinding="{x:Null}"/>
@@ -35,5 +35,6 @@
             <Button x:Name="updateButton" Content="Обновить" Click="UpdateButton_Click" />
             <Button x:Name="deleteButton" Content="Изменить" Click="DeleteButton_Click" />
         </StackPanel>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="9999"/>
     </Grid>
 </Window>
