@@ -5,43 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-         Title="MainWindow" Height="449.368" Width="450" Loaded="Window_Loaded1">
+         Title="MainWindow" Height="449.368" Width="450" Loaded="Window_Loaded1" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="20 300 20 8" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="10 300 10 8" />
+            <Setter Property="Width" Value="110" />
+            <Setter Property="Height" Value="45" />
+             <Setter Property="Background" Value="#FD9460"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="10 26 140 20" />
-            <Setter Property="Width" Value="120" />
-            <Setter Property="Height" Value="20" />
+            <Setter Property="Margin" Value="0 15 0 20" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="22" />
         </Style>
         <Style TargetType="Label">
-            <Setter Property="Margin" Value="20 20 20 20" />
+            <Setter Property="Margin" Value="20 10 20 10" />
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </Window.Resources>
     <Grid>
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="Add1" Content="Add" Click="Add1_Click"/>
-            <Button x:Name="Add2" Content="Cancel" Click="Add2_Click"/>
-            <Button x:Name="Add3" Content="Add Random" Click="Add3_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal" Grid.Column="0">
+            <Button x:Name="AddParam" Content="Добавить" Click="AddParam_Click"/>
+            <Button x:Name="AddRandomParam" Content="Добавить&#10;случайное" Click="AddRandomParam_Click"/>
+            <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical">
-            <TextBox x:Name="TextBox1" />
-            <TextBox x:Name="TextBox2" />
-            <TextBox x:Name="TextBox3" />
-            <TextBox x:Name="TextBox4" />
-            <TextBox x:Name="TextBox5" />
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="200,0,0,0" Height="auto" VerticalAlignment="Top">
+            <TextBox x:Name="RadiusTextBox" />
+            <TextBox x:Name="DConstantTextBox" />
+            <TextBox x:Name="TPolarizationTextBox" />
+            <TextBox x:Name="SpeedTextBox" />
+            <TextBox x:Name="MPolarizationTextBox" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Grid.Row="1" Orientation="Vertical">
-            <Label x:Name="label1" Content="Radius" />
-            <Label x:Name="label2" Content="Dielectric_constant" />
-            <Label x:Name="label3" Content="Theoretical_polarization" />
-            <Label x:Name="label4" Content="Measured_speed" />
-            <Label x:Name="label5" Content="Measured_polarization" />
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="210" >
+            <Label x:Name="label1">
+                <Label.Content>
+                    <AccessText TextWrapping="Wrap" Text="Радиус"/>
+                </Label.Content>
+            </Label>
+            <Label x:Name="label2">
+                <Label.Content>
+                    <AccessText TextWrapping="Wrap" Text="Диэлектрическая константа"/>
+                </Label.Content>
+            </Label>
+            <Label x:Name="label3">
+                <Label.Content>
+                    <AccessText TextWrapping="Wrap" Text="Теоретическая поляризация"/>
+                </Label.Content>
+            </Label>
+            <Label x:Name="label4">
+                <Label.Content>
+                    <AccessText TextWrapping="Wrap" Text="Измеренная скорость"/>
+                </Label.Content>
+            </Label>
+            <Label x:Name="label5" >
+                <Label.Content>
+                    <AccessText TextWrapping="Wrap" Text="Измеренная поляризация"/>
+                </Label.Content>
+            </Label>
         </StackPanel>
     </Grid>
 </Window>

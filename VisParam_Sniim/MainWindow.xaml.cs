@@ -23,54 +23,31 @@ namespace VisParam_Sniim
         string connectionString;
         SqlDataAdapter adapter;
         DataTable VisParam;
-        DataView VisParamview;
-        String id = "111";
-        //DataGrid ValuesGrid = sender as DataGrid;
-        //  row = (User)dg.SelectedItems[0];
-        // Console.WriteLine(row.UserID)
+
         public MainWindow()
         {
             InitializeComponent();
-            // получаем строку подключения из app.config
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string sql = "SELECT * FROM Viscoelastic_param_table";
+            string SelectSql = "SELECT * FROM ViscoelasticParamTable";
             VisParam = new DataTable();
-            SqlConnection connection = null;
-            
-
-            // conn.Open();
-            // SqlDataAdapter rdr = new SqlDataAdapter("Select * from Employees", conn);
-            // SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(command);
-            // SqlCommand cmd = new SqlCommand("delete from Viscoelastic_param_table where id=@id", command.SelectCommand.connection);
-            // cmd.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
-            // cmd.Parameters["id"].SourceVersion = DataRowVersion.Original;
-            // cmd.Parameters["id"].SourceColumn = "id";
-            // rdr.DeleteCommand = cmd;
-            // rdr.Fill(dataset, "mydata")
-            // Console.WriteLine(cmdBuilder.GetDeleteCommand().CommandText);
-            // foreach (DataRow row in dataset.Tables.Rows)
-            // {
-            // row.Delete();
-            // }
-            //           UpdateDB();
-            //        
-
+            SqlConnection dbConnection = null;
+              
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
-                adapter = new SqlDataAdapter(command);
-                adapter.InsertCommand = new SqlCommand("InsertValue", connection);
-                adapter.DeleteCommand = new SqlCommand("DELETE * FROM Viscoelastic_param_table WHERE ID = @ID", connection);
-                connection.Open();
+                dbConnection = new SqlConnection(connectionString);
+                SqlCommand SelectCommand = new SqlCommand(SelectSql, dbConnection);
+                adapter = new SqlDataAdapter(SelectCommand)
+                {
+                    InsertCommand = new SqlCommand("InsertValue", dbConnection),
+                    DeleteCommand = new SqlCommand("DELETE * FROM ViscoelasticParamTable WHERE ID = @ID", dbConnection)
+                };
+                dbConnection.Open();
                 adapter.Fill(VisParam);
-                ValuesGrid.ItemsSource = VisParam.DefaultView;
-           
-                
+                ValuesGrid.ItemsSource = VisParam.DefaultView; 
             }
             catch (Exception ex)
             {
@@ -78,15 +55,14 @@ namespace VisParam_Sniim
             }
             finally
             {
-                if (connection != null)
-                    connection.Close();
+                if (dbConnection != null)
+                    dbConnection.Close();
             }
         }
 
         public void UpdateDB()
         {
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
-            //adapter.Update(VisParam);
             VisParam.Clear();
             adapter.Fill(VisParam);
         }
@@ -99,42 +75,32 @@ namespace VisParam_Sniim
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             DataRowView rowview = ValuesGrid.SelectedItem as DataRowView;
-            id = rowview.Row[0].ToString();
-            
-            SqlConnection con1 = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("delete from Viscoelastic_param_table where ID=@ID", con1);
-            cmd.Parameters.Add(new SqlParameter("@ID", id));
+            SqlConnection dbConnection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("delete from ViscoelasticParamTable where ID=@ID", dbConnection);
+            cmd.Parameters.Add(new SqlParameter("@ID", rowview.Row[0].ToString()));
 
-
-            con1.Open();
+            dbConnection.Open();
             try
             {
              cmd.ExecuteNonQuery();
-
-             }
+            }
             catch (SqlException ex)
-             {
+            {
                 MessageBox.Show(ex.Message);
             }
              finally
-             {
-                con1.Close();
+            {
+                dbConnection.Close();
+                UpdateDB();
             }
-         
-          
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 win1 = new Window1();
-            win1.Show();
+            Window1 AddParamWin = new Window1();
+            AddParamWin.Show();
         }
-        public void SelectionChanged(object sender, SelectionChangedEventArgs e)
 
-        {
-            DataRowView rowview = ValuesGrid.SelectedItem as DataRowView;
-            textBlock.Text = rowview.Row[0].ToString();
-        }
     }
 }
 
