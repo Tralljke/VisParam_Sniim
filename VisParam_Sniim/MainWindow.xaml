@@ -32,10 +32,11 @@
            
         </DataGrid>
 
-        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
             <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" />
             <Button x:Name="UpdateButton" Content="Обновить" Click="UpdateButton_Click" />
+            <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
         </StackPanel>
     </Grid>
 </Window>

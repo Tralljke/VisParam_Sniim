@@ -33,6 +33,7 @@
             <Button x:Name="AddParam" Content="Добавить" Click="AddParam_Click"/>
             <Button x:Name="AddRandomParam" Content="Добавить&#10;случайное" Click="AddRandomParam_Click"/>
             <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
+
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="200,0,0,0" Height="auto" VerticalAlignment="Top">
             <TextBox x:Name="RadiusTextBox" />

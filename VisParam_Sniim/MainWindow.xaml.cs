@@ -22,7 +22,9 @@ namespace VisParam_Sniim
     {
         string connectionString;
         SqlDataAdapter adapter;
-        DataTable VisParam;
+        public DataTable VisParam;
+        List<double> list = new List<double>();
+
 
         public MainWindow()
         {
@@ -58,12 +60,12 @@ namespace VisParam_Sniim
                 if (dbConnection != null)
                     dbConnection.Close();
             }
-            //string A = "";
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //    A += dataGridView1.Rows[i].Cells[2].Value.ToString();
-            //foreach (DataColumn column in )//
-            string s = Convert.ToString(VisParam.Rows[0][2]);
-            MessageBox.Show(s);
+            
+            for (int i = 0; i < VisParam.Rows.Count; i++)
+                list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
+            StatisticalProcessing.GetAverage(list);
+            StatisticalProcessing.ShowA();
+
         }
 
         public void UpdateDB()
@@ -71,6 +73,10 @@ namespace VisParam_Sniim
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
             VisParam.Clear();
             adapter.Fill(VisParam);
+            for (int i = 0; i < VisParam.Rows.Count; i++)
+                list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
+            StatisticalProcessing.GetAverage(list);
+            StatisticalProcessing.ShowA();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -107,6 +113,10 @@ namespace VisParam_Sniim
             AddParamWin.Show();
         }
 
+        private void CloseWin_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
