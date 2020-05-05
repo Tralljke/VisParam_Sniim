@@ -58,6 +58,12 @@ namespace VisParam_Sniim
                 if (dbConnection != null)
                     dbConnection.Close();
             }
+            //string A = "";
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //    A += dataGridView1.Rows[i].Cells[2].Value.ToString();
+            //foreach (DataColumn column in )//
+            string s = Convert.ToString(VisParam.Rows[0][2]);
+            MessageBox.Show(s);
         }
 
         public void UpdateDB()
@@ -76,23 +82,23 @@ namespace VisParam_Sniim
         {
             DataRowView rowview = ValuesGrid.SelectedItem as DataRowView;
             SqlConnection dbConnection = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("delete from ViscoelasticParamTable where ID=@ID", dbConnection);
-            cmd.Parameters.Add(new SqlParameter("@ID", rowview.Row[0].ToString()));
+            SqlCommand deleteCommand = new SqlCommand("delete from ViscoelasticParamTable where ID=@ID", dbConnection);
+            deleteCommand.Parameters.Add(new SqlParameter("@ID", rowview.Row[0].ToString()));
 
             dbConnection.Open();
             try
-            {
-             cmd.ExecuteNonQuery();
-            }
+                {
+                    deleteCommand.ExecuteNonQuery();
+                }
             catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-             finally
-            {
-                dbConnection.Close();
-                UpdateDB();
-            }
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            finally
+                {
+                    dbConnection.Close();
+                    UpdateDB();
+                }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
