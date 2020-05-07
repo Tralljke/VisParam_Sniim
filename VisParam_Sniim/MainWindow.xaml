@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
+        Title="MainWindow" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
@@ -14,6 +14,9 @@
             <Setter Property="Background" Value="#FD9460"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -21,18 +24,50 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,3,5,3" FontSize="12">
-          <DataGrid.Columns>
-            <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
-            <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
-            <DataGridTextColumn  Header="Диэлектрическая &#10;постоянная"  MinWidth="120" Width="*" Binding="{Binding dielectricConstant}" ClipboardContentBinding="{x:Null}"/>
-            <DataGridTextColumn  Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding theoreticalPolarization}" ClipboardContentBinding="{x:Null}"/>
-            <DataGridTextColumn  Header="Измеренная &#10;скорость"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
-            <DataGridTextColumn  Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
-          </DataGrid.Columns>          
-           
-        </DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Диэлектрическая &#10;постоянная"  MinWidth="120" Width="*" Binding="{Binding dielectricConstant}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding theoreticalPolarization}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Измеренная &#10;скорость"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
+            </DataGrid.Columns>
 
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Vertical" Width="750"  Margin="0,5,0,200">
+            <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
+                <GroupBox.Header>
+                    Среднее значение
+                </GroupBox.Header>
+                <DataGrid x:Name="AveragesGrid" HorizontalAlignment="Left" Height="70" Width="720" Margin="0,0,0,0" FontSize="10" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Width="30" FontSize="10" />
+                        <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="10" />
+                        <DataGridTextColumn Header="Диэлектрическая &#10;постоянная" MinWidth="120" Width="*" FontSize="10"/>
+                        <DataGridTextColumn Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
+                        <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="10" />
+                        <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+
+            </GroupBox>
+            <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
+                <GroupBox.Header>
+                    Дисперсия
+                </GroupBox.Header>
+
+            </GroupBox>
+            <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
+                <GroupBox.Header>
+                    Коэффициент вариативности
+                </GroupBox.Header>
+
+            </GroupBox>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
             <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" />
             <Button x:Name="UpdateButton" Content="Обновить" Click="UpdateButton_Click" />

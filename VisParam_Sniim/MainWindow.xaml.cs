@@ -24,7 +24,8 @@ namespace VisParam_Sniim
         SqlDataAdapter adapter;
         public DataTable VisParam;
         List<double> list = new List<double>();
-
+        List<StatisticalProcessing.MyParams> list1 = new List<StatisticalProcessing.MyParams>();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace VisParam_Sniim
             string SelectSql = "SELECT * FROM ViscoelasticParamTable";
             VisParam = new DataTable();
             SqlConnection dbConnection = null;
-              
+             
             try
             {
                 dbConnection = new SqlConnection(connectionString);
@@ -48,7 +49,10 @@ namespace VisParam_Sniim
                 };
                 dbConnection.Open();
                 adapter.Fill(VisParam);
-                ValuesGrid.ItemsSource = VisParam.DefaultView; 
+                ValuesGrid.ItemsSource = VisParam.DefaultView;
+                
+
+
             }
             catch (Exception ex)
             {
@@ -75,7 +79,15 @@ namespace VisParam_Sniim
                 }
             }
             StatisticalProcessing.GetAverage(list);
-            StatisticalProcessing.ShowA();
+            AddParams();
+            AveragesGrid.ItemsSource = list1;
+            //StatisticalProcessing.ShowA();
+        }
+
+        public void AddParams()
+        {
+            list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
+            list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
         }
 
 
@@ -128,6 +140,8 @@ namespace VisParam_Sniim
         {
             this.Close();
         }
+
+
     }
 }
 
