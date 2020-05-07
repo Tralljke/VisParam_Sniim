@@ -25,7 +25,6 @@ namespace VisParam_Sniim
         public DataTable VisParam;
         List<double> list = new List<double>();
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -65,7 +64,6 @@ namespace VisParam_Sniim
                 list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
             StatisticalProcessing.GetAverage(list);
             StatisticalProcessing.ShowA();
-
         }
 
         public void UpdateDB()

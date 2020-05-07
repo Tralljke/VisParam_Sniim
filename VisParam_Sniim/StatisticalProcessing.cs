@@ -11,8 +11,7 @@ namespace VisParam_Sniim
 {
     class StatisticalProcessing
     {
-        static double average;
-        
+        static double average;   
         public static void GetAverage(List<double> list) 
         {
            double Average = list.Average();
@@ -27,7 +26,6 @@ namespace VisParam_Sniim
            var Z = x - Math.Pow(average,2); // DISPERSIYA!!!!!!!!!!
             MessageBox.Show(Z.ToString());
             list.Clear();
-        
         }
 
         public static void ShowA()
