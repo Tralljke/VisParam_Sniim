@@ -22,11 +22,13 @@ namespace VisParam_Sniim
             for (int i = 0; i < list.Count; i++)
             {
                var v = Convert.ToDouble((Math.Pow(list[i], 2))/list.Count);
-                x=x+v;
+                x += v;
             }
-           var Z = x - Math.Pow(average,2); // DISPERSIYA!!!!!!!!!!
-            MessageBox.Show(Z.ToString());
-            list.Clear();
+           double Z = x - Math.Pow(average,2); // DISPERSIYA!!!!!!!!!!
+           double C = Math.Sqrt(Z);
+           MessageBox.Show("Дисперсия равна: " + Z.ToString());
+           MessageBox.Show("Коэффициент вариации равен: " + C.ToString());
+           list.Clear();
         
         }
 

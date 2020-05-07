@@ -60,13 +60,25 @@ namespace VisParam_Sniim
                 if (dbConnection != null)
                     dbConnection.Close();
             }
-            
-            for (int i = 0; i < VisParam.Rows.Count; i++)
-                list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
+            {
+                if (VisParam.Rows.Count == 0)
+                {
+                    list.Add(0);
+                    MessageBox.Show("Таблица пуста");
+                }
+
+                else
+                {
+                    for (int i = 0; i < VisParam.Rows.Count; i++)
+                    {
+                        list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
+                    }
+                }
+            }
             StatisticalProcessing.GetAverage(list);
             StatisticalProcessing.ShowA();
-
         }
+
 
         public void UpdateDB()
         {
