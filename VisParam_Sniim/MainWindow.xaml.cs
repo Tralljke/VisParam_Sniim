@@ -24,6 +24,7 @@ namespace VisParam_Sniim
         SqlDataAdapter adapter;
         public DataTable VisParam;
         List<double> list = new List<double>();
+        public static List<Erythrocyte> DataList = new List<Erythrocyte>();
         List<StatisticalProcessing.MyParams> list1 = new List<StatisticalProcessing.MyParams>();
         
         public MainWindow()
@@ -74,21 +75,26 @@ namespace VisParam_Sniim
                 {
                     for (int i = 0; i < VisParam.Rows.Count; i++)
                     {
-                        list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
+                        DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][0]),
+                            Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][2]), Convert.ToDouble(VisParam.Rows[i][3]),
+                            Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
                     }
                 }
             }
-            StatisticalProcessing.GetAverage(list);
-            AddParams();
-            AveragesGrid.ItemsSource = list1;
+            //  StatisticalProcessing.GetAverage(list);
+            // AddParams();
+            // AveragesGrid.ItemsSource = list1;
+
+
+            MessageBox.Show(Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
             //StatisticalProcessing.ShowA();
         }
 
-        public void AddParams()
-        {
-            list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
-            list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
-        }
+    //    public void AddParams()
+    //    {
+    //        list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
+    //        list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
+ //       }
 
 
         public void UpdateDB()
@@ -97,9 +103,14 @@ namespace VisParam_Sniim
             VisParam.Clear();
             adapter.Fill(VisParam);
             for (int i = 0; i < VisParam.Rows.Count; i++)
-                list.Add(Convert.ToDouble(VisParam.Rows[i][0]));
-            StatisticalProcessing.GetAverage(list);
-            StatisticalProcessing.ShowA();
+            {
+                for (int k = 0; k < VisParam.Columns.Count; k++)
+                {
+                    list.Add(Convert.ToDouble(VisParam.Rows[i][k]));
+                }
+                }
+            //    StatisticalProcessing.GetAverage(list);
+       //    StatisticalProcessing.ShowA();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -140,8 +151,6 @@ namespace VisParam_Sniim
         {
             this.Close();
         }
-
-
-    }
+      }
 }
 

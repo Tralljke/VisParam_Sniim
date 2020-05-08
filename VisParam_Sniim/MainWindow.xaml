@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
+        Title="Биохимик" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
@@ -53,18 +53,7 @@
 
 
             </GroupBox>
-            <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
-                <GroupBox.Header>
-                    Дисперсия
-                </GroupBox.Header>
-
-            </GroupBox>
-            <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
-                <GroupBox.Header>
-                    Коэффициент вариативности
-                </GroupBox.Header>
-
-            </GroupBox>
+          
 
         </StackPanel>
         <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
