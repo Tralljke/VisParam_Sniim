@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
+        Title="Биохимик" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
@@ -41,9 +41,10 @@
                 </GroupBox.Header>
                 <DataGrid AutoGenerateColumns="False" x:Name="AveragesGrid" HorizontalAlignment="Left" Height="90" Width="720" Margin="3,3,3,3" FontSize="10" >
                     <DataGrid.Columns>
-
+                        <DataGridTextColumn Header="Id" Width="30" FontSize="10" />
                         <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding average}"/>
-
+                        <DataGridTextColumn Header="Диэлектрическая &#10;постоянная" MinWidth="120" Width="*" FontSize="10" Binding="{Binding dispersion}"/>
+                        <DataGridTextColumn Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding kef}"/>
                         <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="10" />
                         <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
                     </DataGrid.Columns>
@@ -52,6 +53,7 @@
 
 
             </GroupBox>
+          
 
         </StackPanel>
         <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
