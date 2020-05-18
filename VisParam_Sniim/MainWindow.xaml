@@ -41,10 +41,9 @@
                 </GroupBox.Header>
                 <DataGrid AutoGenerateColumns="False" x:Name="AveragesGrid" HorizontalAlignment="Left" Height="90" Width="720" Margin="3,3,3,3" FontSize="10" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" FontSize="10" />
+
                         <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding average}"/>
-                        <DataGridTextColumn Header="Диэлектрическая &#10;постоянная" MinWidth="120" Width="*" FontSize="10" Binding="{Binding dispersion}"/>
-                        <DataGridTextColumn Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding kef}"/>
+
                         <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="10" />
                         <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
                     </DataGrid.Columns>
