@@ -23,7 +23,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,3,5,3" FontSize="12">
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,5,5,3" FontSize="12">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
@@ -32,34 +32,34 @@
                 <DataGridTextColumn  Header="Измеренная &#10;скорость"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
-
+            
         </DataGrid>
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Vertical" Width="750"  Margin="0,5,0,100" >
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Vertical" Width="750"  Margin="0,5,0,5" >
+            <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
+                <Button x:Name="ChangeButton" Content="Изменить" Click="ChangeButton_Click" />
+                <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" />
+                <Button x:Name="UpdateButton" Content="Обновить" Click="UpdateButton_Click" />
+               
+            </StackPanel>
+           
             <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
                 <GroupBox.Header>
                     Статистические параметры
                 </GroupBox.Header>
-                <DataGrid AutoGenerateColumns="False" x:Name="AveragesGrid" HorizontalAlignment="Left" Height="90" Width="720" Margin="3,3,3,3" FontSize="10" >
+                <DataGrid AutoGenerateColumns="False" x:Name="AveragesGrid" HorizontalAlignment="Left" Height="90" Width="712" Margin="3,3,3,3" FontSize="10" >
                     <DataGrid.Columns>
-
                         <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding average}"/>
-
                         <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="10" />
                         <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-
-            </GroupBox>
-          
-
+  </GroupBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button x:Name="AddButton1" Content="Рассчитать статистические параметры" Click="AddButton_Click" Width="220" />
+            <Button x:Name="CloseWin" Content="Выйти" Click="CloseWin_Click"/>
+            </StackPanel>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
-            <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" />
-            <Button x:Name="UpdateButton" Content="Обновить" Click="UpdateButton_Click" />
-            <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
-        </StackPanel>
+        
     </Grid>
 </Window>

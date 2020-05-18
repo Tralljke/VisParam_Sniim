@@ -151,6 +151,11 @@ namespace VisParam_Sniim
         {
             this.Close();
         }
-      }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }
 
