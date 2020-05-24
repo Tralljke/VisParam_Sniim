@@ -56,7 +56,7 @@ namespace VisParam_Sniim
             }
             finally
             {
-                this.Close();
+                MessageBox.Show("Значения успешно добавлены");
             }
 
             dbConnection.Close();

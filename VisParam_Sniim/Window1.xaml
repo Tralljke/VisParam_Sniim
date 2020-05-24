@@ -14,12 +14,8 @@
              <Setter Property="Background" Value="#FD9460"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="0 15 0 20" />
-            <Setter Property="Width" Value="150" />
-            <Setter Property="Height" Value="22" />
-        </Style>
-        <Style TargetType="Label">
+
+        <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="20 10 20 10" />
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="14"/>
@@ -35,39 +31,19 @@
             <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="200,0,0,0" Height="auto" VerticalAlignment="Top">
-            <TextBox x:Name="RadiusTextBox" />
-            <TextBox x:Name="DConstantTextBox" />
-            <TextBox x:Name="TPolarizationTextBox" />
-            <TextBox x:Name="SpeedTextBox" />
-            <TextBox x:Name="MPolarizationTextBox" />
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="220,0,0,0" Height="auto" VerticalAlignment="Top">
+            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="RadiusTextBox" Text="{Binding Radius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="DConstantTextBox" Text="{Binding DConstant, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="TPolarizationTextBox" Text="{Binding TPolarization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="SpeedTextBox" Text="{Binding Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="MPolarizationTextBox" Text="{Binding MPolarization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="210" >
-            <Label x:Name="label1">
-                <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="Радиус"/>
-                </Label.Content>
-            </Label>
-            <Label x:Name="label2">
-                <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="Диэлектрическая константа"/>
-                </Label.Content>
-            </Label>
-            <Label x:Name="label3">
-                <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="Теоретическая поляризация"/>
-                </Label.Content>
-            </Label>
-            <Label x:Name="label4">
-                <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="Измеренная скорость"/>
-                </Label.Content>
-            </Label>
-            <Label x:Name="label5" >
-                <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="Измеренная поляризация"/>
-                </Label.Content>
-            </Label>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="220" >
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="20" Text="Радиус: " />
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="20" Text="Диэлектрическая константа: " />
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="20" Text="Теоретическая поляризация: " />
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="20" Text="Измеренная скорость: " />
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="20" Text="Измеренная поляризация: " />
         </StackPanel>
     </Grid>
 </Window>
