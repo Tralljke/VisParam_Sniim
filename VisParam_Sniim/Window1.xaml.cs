@@ -24,6 +24,7 @@ namespace VisParam_Sniim
         public Window1()
         {
             InitializeComponent();
+            this.DataContext = new ParamViewModel();
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 

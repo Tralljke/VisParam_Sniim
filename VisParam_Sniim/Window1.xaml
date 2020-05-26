@@ -46,4 +46,5 @@
             <TextBlock Grid.Row="4" Grid.Column="0" Margin="20" Text="Измеренная поляризация: " />
         </StackPanel>
     </Grid>
+    
 </Window>
