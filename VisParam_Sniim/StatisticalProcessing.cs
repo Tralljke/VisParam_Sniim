@@ -20,112 +20,74 @@ namespace VisParam_Sniim
            
             for (int i = 0; i < list.Count; i++ )
             {
-                averageErythrocyte.id += (list[i].id/list.Count);
                 averageErythrocyte.radius += (list[i].radius / list.Count);
-                averageErythrocyte.dielectricConstant += (list[i].dielectricConstant / list.Count);
-                averageErythrocyte.theoreticalPolarization += (list[i].theoreticalPolarization / list.Count);
                 averageErythrocyte.measuredSpeed += (list[i].measuredSpeed / list.Count);
                 averageErythrocyte.measuredPolarization += (list[i].measuredPolarization / list.Count);
             }
-
            return averageErythrocyte;
         }
 
-        public static Tuple<double, double, double, double, double, double> GetDispersion(List<Erythrocyte> list)
+        public static Erythrocyte GetDispersion(List<Erythrocyte> list)
         {
-            double a = 0, b = 0, c = 0, d = 0, e = 0, f = 0;
+            Erythrocyte average = GetAverage(list);
+            Erythrocyte dispersionErythrocyte = new Erythrocyte();
+
             for (int i = 0; i < list.Count; i++)
             {
-                a += (Math.Pow(list[i].id,2) / list.Count);
-                b += (Math.Pow(list[i].radius,2) / list.Count);
-                c += (Math.Pow(list[i].dielectricConstant,2) / list.Count);
-                d += (Math.Pow(list[i].theoreticalPolarization,2) / list.Count);
-                e += (Math.Pow(list[i].measuredSpeed,2) / list.Count);
-                f += (Math.Pow(list[i].measuredPolarization,2) / list.Count);
+                dispersionErythrocyte.radius += (Math.Pow((list[i].radius - average.radius),2)/list.Count);
+                dispersionErythrocyte.measuredSpeed += (Math.Pow((list[i].measuredSpeed - average.measuredSpeed), 2) / list.Count);
+                dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization - average.measuredPolarization), 2) / list.Count);
             }
-            return Tuple.Create(a, b, c, d, e, f);
+            return dispersionErythrocyte;
         }
 
-        public static void Down(double a, double c, double d, double e,
-            double f, double g)
-        {
-            
-            MessageBox.Show(Convert.ToString(a + c + d + e + f + g));
-        }
-
-        
-
-        //public static void GetAverage(List<RowsData> list) 
-
+        //public static Erythrocyte GetDispersion2(List<Erythrocyte> list)
         //{
-        //   double Average;
-        //    double a = MainWindow.DataList[0].id;
-        //   average = Average ;
-        //   MessageBox.Show(Average.ToString());
-        //   double x = 0; //Сумма всех квадратов (/n)
+        //    Erythrocyte average = GetAverage(list);
+        //    Erythrocyte dispersionErythrocyte = new Erythrocyte();
+        //    Erythrocyte dispEry = new Erythrocyte();
+
         //    for (int i = 0; i < list.Count; i++)
         //    {
-        //       var v = Convert.ToDouble((Math.Pow(list[i], 2))/list.Count);
-        //        x += v;
+        //        dispersionErythrocyte.radius += (Math.Pow((list[i].radius), 2) / list.Count);
+        //        dispersionErythrocyte.measuredSpeed += (Math.Pow((list[i].measuredSpeed), 2) / list.Count);
+        //        dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization), 2) / list.Count);
         //    }
-        //   Z = x - Math.Pow(average,2); // DISPERSIYA!!!!!!!!!!
-        //   C = Math.Sqrt(Z);
-        //   MessageBox.Show("Дисперсия равна: " + Z.ToString());
+        //    dispEry.radius = dispersionErythrocyte.radius - Math.Pow(average.radius,2);
+        //    dispEry.measuredSpeed = dispersionErythrocyte.measuredSpeed - Math.Pow(average.radius, 2);
+        //    dispEry.measuredPolarization = dispersionErythrocyte.measuredPolarization - Math.Pow(average.radius, 2);
 
-        //    list.Clear();
-        
-        //}
-     
-       // public static void ShowA()
-        //{
-          //  MessageBox.Show(average.ToString());
+        //    return dispEry;
         //}
 
-
-    
         public class RowsAverage
         {
-            private double id = 0;
-            private double raduis = 0;
-            private double dielectricConstant = 0;
-            private double theoreticalPolarization = 0;
-            private double measuredSpeed = 0;
-            private double measuredPolarization = 0;
-
-            public double AveId {
-                get { return id; } 
-                set { id += value; } }
+            private double _raduis = 0;
+            private double _measuredSpeed = 0;
+            private double _measuredPolarization = 0;
+ 
             public double AveRadius
             {
-                get { return raduis; }
-                set { raduis += value; }
+                get { return _raduis; }
+                set { _raduis += value; }
             }
-            public double AveDielectricConstant
-            {
-                get { return dielectricConstant; }
-                set { dielectricConstant += value; }
-            }
-            public double AveTheoreticalPolarization
-            {
-                get { return theoreticalPolarization; }
-                set { theoreticalPolarization += value; }
-            }
+                       
             public double AveMeasuredSpeed
             {
-                get { return id; }
-                set { id += value; }
+                get { return _measuredSpeed; }
+                set { _measuredSpeed += value; }
             }
+
             public double AveMeasuredPolarization
             {
-                get { return id; }
-                set { id += value; }
+                get { return _measuredPolarization; }
+                set { _measuredPolarization += value; }
             }
 
             public RowsAverage()
             {
               
             }
-
         }
 
         //public void AddDataRows (List<RowsData> DataList)

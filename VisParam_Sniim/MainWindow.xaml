@@ -23,7 +23,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="True" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="5,5,5,3" FontSize="12">
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="7,5,3,3" FontSize="12">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>

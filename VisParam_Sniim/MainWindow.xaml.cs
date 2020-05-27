@@ -51,19 +51,19 @@ namespace VisParam_Sniim
                 dbConnection.Open();
                 adapter.Fill(VisParam);
                 ValuesGrid.ItemsSource = VisParam.DefaultView;
-                
-
-
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
             finally
             {
                 if (dbConnection != null)
                     dbConnection.Close();
             }
+
             {
                 if (VisParam.Rows.Count == 0)
                 {
@@ -75,27 +75,15 @@ namespace VisParam_Sniim
                 {
                     for (int i = 0; i < VisParam.Rows.Count; i++)
                     {
-                        DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][0]),
-                            Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][2]), Convert.ToDouble(VisParam.Rows[i][3]),
-                            Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
+                        DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
                     }
                 }
             }
-            //  StatisticalProcessing.GetAverage(list);
-            // AddParams();
-            // AveragesGrid.ItemsSource = list1;
 
-
-            MessageBox.Show(Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
-            //StatisticalProcessing.ShowA();
+            MessageBox.Show("Averrage: " + Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
+            MessageBox.Show("Dispersion: " + Convert.ToString(StatisticalProcessing.GetDispersion(DataList)));
+            MessageBox.Show("Dispersion2: " + Convert.ToString(StatisticalProcessing.GetDispersion2(DataList)));
         }
-
-    //    public void AddParams()
-    //    {
-    //        list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
-    //        list1.Add(new StatisticalProcessing.MyParams(Ave: StatisticalProcessing.average, Dispersion: StatisticalProcessing.Z, Kef: StatisticalProcessing.C));
- //       }
-
 
         public void UpdateDB()
         {
@@ -108,9 +96,7 @@ namespace VisParam_Sniim
                 {
                     list.Add(Convert.ToDouble(VisParam.Rows[i][k]));
                 }
-                }
-            //    StatisticalProcessing.GetAverage(list);
-       //    StatisticalProcessing.ShowA();
+            }
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
