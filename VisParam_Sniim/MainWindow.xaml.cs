@@ -25,7 +25,7 @@ namespace VisParam_Sniim
         public DataTable VisParam;
         List<double> list = new List<double>();
         public static List<Erythrocyte> DataList = new List<Erythrocyte>();
-        List<StatisticalProcessing.MyParams> list1 = new List<StatisticalProcessing.MyParams>();
+       
         
         public MainWindow()
         {
@@ -51,6 +51,7 @@ namespace VisParam_Sniim
                 dbConnection.Open();
                 adapter.Fill(VisParam);
                 ValuesGrid.ItemsSource = VisParam.DefaultView;
+                
             }
 
             catch (Exception ex)
@@ -82,7 +83,14 @@ namespace VisParam_Sniim
 
             MessageBox.Show("Averrage: " + Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
             MessageBox.Show("Dispersion: " + Convert.ToString(StatisticalProcessing.GetDispersion(DataList)));
-            MessageBox.Show("Dispersion2: " + Convert.ToString(StatisticalProcessing.GetDispersion2(DataList)));
+            MessageBox.Show("Var Coeff: " + Convert.ToString(StatisticalProcessing.GetVarCoef(DataList)));
+
+            List<Erythrocyte> idk = new List<Erythrocyte>();
+            idk.Add(StatisticalProcessing.GetAverage(DataList));
+            idk.Add(StatisticalProcessing.GetDispersion(DataList));
+            idk.Add(StatisticalProcessing.GetVarCoef(DataList));
+
+            AveragesGrid.ItemsSource = idk;
         }
 
         public void UpdateDB()

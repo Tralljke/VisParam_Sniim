@@ -12,12 +12,22 @@ namespace VisParam_Sniim
         public double radius { get; set; }
         public double measuredSpeed { get; set; }
         public double measuredPolarization { get; set; }
+        public string statisticalParameterName { get; set; }
 
         public Erythrocyte(double radius, double measuredSpeed, double measuredPolarization)
         {
             this.radius = radius;
             this.measuredSpeed = measuredSpeed;
             this.measuredPolarization = measuredPolarization;
+
+        }
+
+        public Erythrocyte(double radius, double measuredSpeed, double measuredPolarization, string statisticalParameterName)
+        {
+            this.radius = radius;
+            this.measuredSpeed = measuredSpeed;
+            this.measuredPolarization = measuredPolarization;
+            this.statisticalParameterName = statisticalParameterName;
         }
 
         public Erythrocyte() 
@@ -27,7 +37,7 @@ namespace VisParam_Sniim
 
         public override string ToString()
         {
-            return radius + " " + measuredPolarization + " " + measuredSpeed;
+            return radius + " " + measuredPolarization + " " + measuredSpeed + " " + statisticalParameterName;
         }
     }
 }

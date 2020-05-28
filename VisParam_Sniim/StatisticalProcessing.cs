@@ -12,7 +12,7 @@ namespace VisParam_Sniim
     public class StatisticalProcessing
     {
        
-        public List<MyParams> result = new List<MyParams>(3);
+        public List<Erythrocyte> result = new List<Erythrocyte>(3);
 
         public static Erythrocyte GetAverage(List<Erythrocyte> list)
         {
@@ -24,6 +24,7 @@ namespace VisParam_Sniim
                 averageErythrocyte.measuredSpeed += (list[i].measuredSpeed / list.Count);
                 averageErythrocyte.measuredPolarization += (list[i].measuredPolarization / list.Count);
             }
+            averageErythrocyte.statisticalParameterName = "Среднее арифметическое";
            return averageErythrocyte;
         }
 
@@ -38,27 +39,24 @@ namespace VisParam_Sniim
                 dispersionErythrocyte.measuredSpeed += (Math.Pow((list[i].measuredSpeed - average.measuredSpeed), 2) / list.Count);
                 dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization - average.measuredPolarization), 2) / list.Count);
             }
+            dispersionErythrocyte.statisticalParameterName = "Дисперсия";
             return dispersionErythrocyte;
         }
 
-        //public static Erythrocyte GetDispersion2(List<Erythrocyte> list)
-        //{
-        //    Erythrocyte average = GetAverage(list);
-        //    Erythrocyte dispersionErythrocyte = new Erythrocyte();
-        //    Erythrocyte dispEry = new Erythrocyte();
+        public static Erythrocyte GetVarCoef(List<Erythrocyte> list)
+        {
+            Erythrocyte VarCoef = GetDispersion(list);
+            Erythrocyte VarCoefErythrocyte = new Erythrocyte();
 
-        //    for (int i = 0; i < list.Count; i++)
-        //    {
-        //        dispersionErythrocyte.radius += (Math.Pow((list[i].radius), 2) / list.Count);
-        //        dispersionErythrocyte.measuredSpeed += (Math.Pow((list[i].measuredSpeed), 2) / list.Count);
-        //        dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization), 2) / list.Count);
-        //    }
-        //    dispEry.radius = dispersionErythrocyte.radius - Math.Pow(average.radius,2);
-        //    dispEry.measuredSpeed = dispersionErythrocyte.measuredSpeed - Math.Pow(average.radius, 2);
-        //    dispEry.measuredPolarization = dispersionErythrocyte.measuredPolarization - Math.Pow(average.radius, 2);
-
-        //    return dispEry;
-        //}
+            for (int i = 0; i < list.Count; i++)
+            {
+                VarCoefErythrocyte.radius += Math.Sqrt(VarCoef.radius);
+                VarCoefErythrocyte.measuredSpeed += Math.Sqrt(VarCoef.measuredSpeed);
+                VarCoefErythrocyte.measuredPolarization += Math.Sqrt(VarCoef.measuredPolarization);
+            }
+            VarCoefErythrocyte.statisticalParameterName = "Коэф Вариации";
+            return VarCoefErythrocyte;
+        }
 
         public class RowsAverage
         {
@@ -90,22 +88,5 @@ namespace VisParam_Sniim
             }
         }
 
-        //public void AddDataRows (List<RowsData> DataList)
-        //{
-        //    DataList.Add(new RowsData());
-        //}
-        public class MyParams
-        {
-            public MyParams (double Ave, double Dispersion, double Kef)
-            {
-                this.average = Ave;
-                this.dispersion = Dispersion;
-                this.kef = Kef;
-            }
-            public double average { get; set; }
-            public double dispersion { get; set; }
-            public double kef { get; set; }
-
-        }
     }
 }
