@@ -71,26 +71,13 @@ namespace VisParam_Sniim
                     list.Add(0);
                     MessageBox.Show("Таблица пуста");
                 }
-
-                else
-                {
-                    for (int i = 0; i < VisParam.Rows.Count; i++)
-                    {
-                        DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
-                    }
-                }
-            }
+           }
 
             MessageBox.Show("Averrage: " + Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
             MessageBox.Show("Dispersion: " + Convert.ToString(StatisticalProcessing.GetDispersion(DataList)));
             MessageBox.Show("Var Coeff: " + Convert.ToString(StatisticalProcessing.GetVarCoef(DataList)));
 
-            List<Erythrocyte> idk = new List<Erythrocyte>();
-            idk.Add(StatisticalProcessing.GetAverage(DataList));
-            idk.Add(StatisticalProcessing.GetDispersion(DataList));
-            idk.Add(StatisticalProcessing.GetVarCoef(DataList));
-
-            AveragesGrid.ItemsSource = idk;
+           
         }
 
         public void UpdateDB()
@@ -98,13 +85,6 @@ namespace VisParam_Sniim
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
             VisParam.Clear();
             adapter.Fill(VisParam);
-            for (int i = 0; i < VisParam.Rows.Count; i++)
-            {
-                for (int k = 0; k < VisParam.Columns.Count; k++)
-                {
-                    list.Add(Convert.ToDouble(VisParam.Rows[i][k]));
-                }
-            }
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -149,6 +129,33 @@ namespace VisParam_Sniim
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void GetStatisticalParam_Click(object sender, RoutedEventArgs e)
+        {
+            if (VisParam.Rows.Count == 0)
+            {
+                list.Add(0);
+                MessageBox.Show("Таблица пуста");
+            }
+            else
+            {
+                for (int i = 0; i < VisParam.Rows.Count; i++)
+                {
+                    DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
+                }
+
+                List<Erythrocyte> idk = new List<Erythrocyte>();
+                if (idk.Count == 0)
+                {
+                    idk.Add(StatisticalProcessing.GetAverage(DataList));
+                    idk.Add(StatisticalProcessing.GetDispersion(DataList));
+                    idk.Add(StatisticalProcessing.GetVarCoef(DataList));
+                    DataList.Clear();
+                }
+                StatisticalParamsGrid.ItemsSource = idk;
+               
+            }
         }
     }
 }

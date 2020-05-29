@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Биохимик" Height="600" Width="750" Loaded="Window_Loaded" Background="#FFD9EDF6">
     <Window.Resources>
+        <SolidColorBrush x:Key="clBr" Color="#F2F5F9" />
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
             <Setter Property="Width" Value="100" />
@@ -20,8 +21,8 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" MinHeight="264" />
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="7,5,3,3" FontSize="12">
             <DataGrid.Columns>
@@ -32,37 +33,46 @@
                 <DataGridTextColumn  Header="Измеренная &#10;скорость"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
-            
+
         </DataGrid>
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Vertical" Width="750"  Margin="0,5,0,5" >
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Vertical" Width="750"  Margin="-4,5" >
             <StackPanel HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
                 <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
                 <Button x:Name="ChangeButton" Content="Изменить" Click="ChangeButton_Click" />
                 <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" />
                 <Button x:Name="UpdateButton" Content="Обновить" Click="UpdateButton_Click" />
-               
+
             </StackPanel>
-           
+
             <GroupBox Margin="10,10,10,10" BorderThickness="2" BorderBrush="#FFB8D0B1" FontSize="14">
                 <GroupBox.Header>
                     Статистические параметры
                 </GroupBox.Header>
-                <DataGrid  AutoGenerateColumns="True" x:Name="AveragesGrid" HorizontalAlignment="Left" Height="90" Width="712" Margin="3,3,3,3" FontSize="10" RowHeaderWidth="0" >
+                <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="StatisticalParamsGrid" HorizontalAlignment="Left" Height="110" Width="712" Margin="3,3,0,3" FontSize="12" RowHeaderWidth="0" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Наименование параметра"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding idk}" />
-                        <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="10" Binding="{Binding average}"/>
-                        <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="10" />
-                        <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="10"/>
-                        
+                        <DataGridTextColumn Header="Наименование параметра"  MinWidth="200" Width="*" FontSize="12" Binding="{Binding statisticalParameterName}" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Background" 
+                                Value="{StaticResource clBr}" />
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="12" Binding="{Binding radius}"/>
+                        <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="12"  Binding="{Binding measuredSpeed}" />
+                        <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="12" Binding="{Binding measuredPolarization}" />
                     </DataGrid.Columns>
-                   
                 </DataGrid>
-  </GroupBox>
+            </GroupBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-            <Button x:Name="AddButton1" Content="Рассчитать статистические параметры" Click="AddButton_Click" Width="220" />
-            <Button x:Name="CloseWin" Content="Выйти" Click="CloseWin_Click"/>
+                <Button x:Name="GetStatisticalParam" Content="Рассчитать статистические параметры" Click="GetStatisticalParam_Click" Width="220" />
+                <Button x:Name="CloseWin" Content="Выйти" Click="CloseWin_Click"/>
             </StackPanel>
         </StackPanel>
-        
+
     </Grid>
 </Window>
