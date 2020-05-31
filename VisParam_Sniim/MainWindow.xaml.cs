@@ -73,10 +73,7 @@ namespace VisParam_Sniim
                 }
            }
 
-            MessageBox.Show("Averrage: " + Convert.ToString(StatisticalProcessing.GetAverage(DataList)));
-            MessageBox.Show("Dispersion: " + Convert.ToString(StatisticalProcessing.GetDispersion(DataList)));
-            MessageBox.Show("Var Coeff: " + Convert.ToString(StatisticalProcessing.GetVarCoef(DataList)));
-
+           
            
         }
 

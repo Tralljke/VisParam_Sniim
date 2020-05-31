@@ -25,7 +25,10 @@ namespace VisParam_Sniim
                 averageErythrocyte.measuredPolarization += (list[i].measuredPolarization / list.Count);
             }
             averageErythrocyte.statisticalParameterName = "Среднее арифметическое";
-           return averageErythrocyte;
+            averageErythrocyte.radius = (averageErythrocyte.measuredPolarization);
+            averageErythrocyte.measuredSpeed = (averageErythrocyte.measuredSpeed);
+            averageErythrocyte.measuredPolarization=  (averageErythrocyte.radius);
+            return averageErythrocyte;
         }
 
         public static Erythrocyte GetDispersion(List<Erythrocyte> list)
@@ -40,21 +43,30 @@ namespace VisParam_Sniim
                 dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization - average.measuredPolarization), 2) / list.Count);
             }
             dispersionErythrocyte.statisticalParameterName = "Дисперсия";
+            dispersionErythrocyte.radius = (dispersionErythrocyte.measuredPolarization);
+            dispersionErythrocyte.measuredSpeed = (dispersionErythrocyte.measuredSpeed);
+            dispersionErythrocyte.measuredPolarization = (dispersionErythrocyte.radius);
             return dispersionErythrocyte;
         }
 
         public static Erythrocyte GetVarCoef(List<Erythrocyte> list)
         {
-            Erythrocyte VarCoef = GetDispersion(list);
+            Erythrocyte average = GetAverage(list);
+            Erythrocyte VarCoef = new Erythrocyte();
             Erythrocyte VarCoefErythrocyte = new Erythrocyte();
-
             for (int i = 0; i < list.Count; i++)
             {
-                VarCoefErythrocyte.radius += Math.Sqrt(VarCoef.radius);
-                VarCoefErythrocyte.measuredSpeed += Math.Sqrt(VarCoef.measuredSpeed);
-                VarCoefErythrocyte.measuredPolarization += Math.Sqrt(VarCoef.measuredPolarization);
+                VarCoef.radius += (Math.Pow((list[i].radius - average.radius), 2) / (list.Count));
+                VarCoef.measuredSpeed += (Math.Pow((list[i].measuredSpeed - average.measuredSpeed), 2) / (list.Count));
+                VarCoef.measuredPolarization += (Math.Pow((list[i].measuredPolarization - average.measuredPolarization), 2) / (list.Count)) ;
             }
-            VarCoefErythrocyte.statisticalParameterName = "Коэф Вариации";
+
+            VarCoefErythrocyte.radius = (((Math.Sqrt((VarCoef.radius)))/average.radius) * 100);
+            VarCoefErythrocyte.measuredSpeed = (((Math.Sqrt(VarCoef.measuredSpeed)) / average.measuredSpeed) * 100);
+            VarCoefErythrocyte.measuredPolarization = (((Math.Sqrt(VarCoef.measuredPolarization)) / average.measuredPolarization) * 100);
+        
+            VarCoefErythrocyte.statisticalParameterName = "Коэф Вариации %";
+          
             return VarCoefErythrocyte;
         }
 
