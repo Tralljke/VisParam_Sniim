@@ -26,12 +26,11 @@
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="ValuesGrid" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow" Margin="7,5,3,3" FontSize="12">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="Id" Width="30" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Радиус"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Диэлектрическая &#10;постоянная"  MinWidth="120" Width="*" Binding="{Binding dielectricConstant}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Теоретическая &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding theoreticalPolarization}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Измеренная &#10;скорость"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Id" Width="40" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Радиус частицы, мкм"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Теоретическая &#10;поляризуемость, пм³"  MinWidth="120" Width="*" Binding="{Binding theoreticalPolarization}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Измеренная &#10;скорость, м/c"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Измеренная &#10;поляризуемость"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
 
         </DataGrid>
@@ -64,7 +63,7 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Радиус"  MinWidth="120" Width="*" FontSize="12" Binding="{Binding radius}"/>
                         <DataGridTextColumn Header="Измеренная &#10;скорость" MinWidth="120" Width="*" FontSize="12"  Binding="{Binding measuredSpeed}" />
-                        <DataGridTextColumn Header="Измеренная &#10;поляризация"  MinWidth="120" Width="*" FontSize="12" Binding="{Binding measuredPolarization}" />
+                        <DataGridTextColumn Header="Измеренная &#10;поляризуемость"  MinWidth="120" Width="*" FontSize="12" Binding="{Binding measuredPolarization}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

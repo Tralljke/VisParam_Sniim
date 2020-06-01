@@ -139,7 +139,7 @@ namespace VisParam_Sniim
             {
                 for (int i = 0; i < VisParam.Rows.Count; i++)
                 {
-                    DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][4]), Convert.ToDouble(VisParam.Rows[i][5])));
+                    DataList.Add(new Erythrocyte(Convert.ToDouble(VisParam.Rows[i][1]), Convert.ToDouble(VisParam.Rows[i][3]), Convert.ToDouble(VisParam.Rows[i][4])));
                 }
 
                 List<Erythrocyte> idk = new List<Erythrocyte>();

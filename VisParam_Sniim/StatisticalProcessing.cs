@@ -25,9 +25,6 @@ namespace VisParam_Sniim
                 averageErythrocyte.measuredPolarization += (list[i].measuredPolarization / list.Count);
             }
             averageErythrocyte.statisticalParameterName = "Среднее арифметическое";
-            averageErythrocyte.radius = (averageErythrocyte.measuredPolarization);
-            averageErythrocyte.measuredSpeed = (averageErythrocyte.measuredSpeed);
-            averageErythrocyte.measuredPolarization=  (averageErythrocyte.radius);
             return averageErythrocyte;
         }
 

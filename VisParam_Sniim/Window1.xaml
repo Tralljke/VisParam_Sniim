@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-         Title="Биохимик Добавление Параметров в таблицу" Height="449.368" Width="450" Loaded="Window_Loaded1" Background="#FFD9EDF6">
+         Title="Биохимик Добавление Параметров в таблицу" Height="400" Width="450" Loaded="Window_Loaded1" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10 300 10 8" />
@@ -25,25 +25,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal" Grid.Column="0">
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal" Grid.Column="0" RenderTransformOrigin="0.288,0.481">
             <Button x:Name="AddParam" Content="Добавить" Click="AddParam_Click"/>
-            <Button x:Name="AddRandomParam" Content="Добавить&#10;случайное" Click="AddRandomParam_Click"/>
+          
             <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="220,0,0,0" Height="auto" VerticalAlignment="Top">
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="220,20,0,0" Height="auto" VerticalAlignment="Top">
             <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="RadiusTextBox" Text="{Binding Radius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="DConstantTextBox" Text="{Binding DConstant, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="TPolarizationTextBox" Text="{Binding TPolarization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Margin="0 20 0 15" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="TPolarizationTextBox" Text="{Binding TPolarization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="SpeedTextBox" Text="{Binding Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox Margin="0 15 0 20" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="MPolarizationTextBox" Text="{Binding MPolarization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="220" >
-            <TextBlock Grid.Row="0" Grid.Column="0" Margin="20" Text="Радиус: " />
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="20" Text="Диэлектрическая константа: " />
-            <TextBlock Grid.Row="2" Grid.Column="0" Margin="20" Text="Теоретическая поляризация: " />
-            <TextBlock Grid.Row="3" Grid.Column="0" Margin="20" Text="Измеренная скорость: " />
-            <TextBlock Grid.Row="4" Grid.Column="0" Margin="20" Text="Измеренная поляризация: " />
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="220" Margin="0,20,0,0" >
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="15" Text="Радиус: " />
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="15" Text="Теоретическая &#10;поляризуемость: " />
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="15" Text="Измеренная скорость: " />
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="15" Text="Измеренная &#10;поляризуемость: " />
         </StackPanel>
     </Grid>
     

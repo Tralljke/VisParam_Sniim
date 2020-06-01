@@ -21,7 +21,6 @@ namespace VisParam_Sniim
             var builder = new ValidationBuilder<ParamViewModel>();
 
             builder.RuleFor(vm => vm.Radius).NotEmpty().WithMessage("Введите радиус, не оставляйте поле пустым");
-            builder.RuleFor(vm => vm.DConstant).NotEmpty().WithMessage("Введите постоянную, не оставляйте поле пустым");
             builder.RuleFor(vm => vm.TPolarization).NotEmpty().WithMessage("Введите теоретическую поляризацию, не оставляйте поле пустым"); 
             builder.RuleFor(vm => vm.Speed).NotEmpty().WithMessage("Введите скорость, не оставляйте поле пустым");
             builder.RuleFor(vm => vm.MPolarization).NotNull().WithMessage("Введите измеренную поляризацию, не оставляйте поле пустым");
@@ -40,16 +39,6 @@ namespace VisParam_Sniim
             }
         }
            
-        private string _dConstant;
-        public string DConstant
-        {
-            get => _dConstant;
-            set
-            {
-                _dConstant = value;
-                OnPropertyChanged();
-            }
-        }
 
         private string _tPolarization;
         public string TPolarization
