@@ -68,47 +68,7 @@ namespace VisParam_Sniim
             this.Close();
         }
 
-        private void AddRandomParam_Click(object sender, RoutedEventArgs e)
-        {
-            Random rand = new Random();
-            try
-            {
-                // добавить i = 10 случайных значений в базу данных 
-                // диапазон значений приближен к реальным
-                for (int i = 0; i < 10; i++)
-                {
-                    SqlConnection dbConnection = new SqlConnection(connectionString);
-                    SqlCommand InsertValueCommand = new SqlCommand("dbo.InsertValue", dbConnection)
-                    {
-                        CommandType = CommandType.StoredProcedure
-                    };
-                    InsertValueCommand.Parameters.AddWithValue("@radius", (rand.NextDouble() * 0.00000060 + 0.0000309));
-                    InsertValueCommand.Parameters.AddWithValue("@dielectricConstant", (rand.NextDouble() * 0.015 + 20.08));
-                    InsertValueCommand.Parameters.AddWithValue("@measuredSpeed", (rand.NextDouble() * 1.383E-05 + 1.22E-05));
-                    InsertValueCommand.Parameters.AddWithValue("@measuredPolarization", (rand.NextDouble() * 0.15E-15 + 9.97E-15));
-                    dbConnection.Open();
-                    try
-                    {
-                        InsertValueCommand.ExecuteNonQuery();
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        dbConnection.Close();
-                    }
-                    
-                }
-                MessageBox.Show("Значения успешно добавлены");
-            }
-            catch (Exception idk) {
-                MessageBox.Show(idk.Message);
-            }
-            
-        }
- 
+       
     }
 
     

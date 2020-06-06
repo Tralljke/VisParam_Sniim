@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace VisParam_Sniim
 {
-    class lognormalDistribution
+    public class lognormalDistribution
     {
 
-        public double[] GetlogNormal(double[] list)
+        public static double[] GetlogNormal(double[] list)
         {
-
-
             return list;
         }
     }
