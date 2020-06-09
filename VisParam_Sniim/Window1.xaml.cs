@@ -33,7 +33,7 @@ namespace VisParam_Sniim
        
         }
 
-        private void AddParam_Click(object sender, RoutedEventArgs e)
+        public void AddParam_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection dbConnection = new SqlConnection(connectionString);
             SqlCommand InsertValueCommand = new SqlCommand("dbo.InsertValue", dbConnection)
@@ -57,6 +57,7 @@ namespace VisParam_Sniim
             finally
             {
                 MessageBox.Show("Значения успешно добавлены");
+                
             }
 
             dbConnection.Close();

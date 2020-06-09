@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StatisticalProcessingTests
 {
-    class lognormalDistributionTest
+    class LognormalDistributionTest
     {
         public static double[] TestDataList = new double[3];
         double[] trueDispersion = new double[] {1,2,3};
@@ -22,7 +22,7 @@ namespace StatisticalProcessingTests
         {
 
             // act
-            double[] res = lognormalDistribution.GetlogNormal(TestDataList);
+            double[] res = LognormalDistribution.GetlogNormal(TestDataList);
 
             // assert
             Assert.AreEqual(trueDispersion[0], res[0]);

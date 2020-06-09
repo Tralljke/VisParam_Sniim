@@ -77,7 +77,7 @@ namespace VisParam_Sniim
            
         }
 
-        public void UpdateDB()
+        private void UpdateDB()
         {
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
             VisParam.Clear();

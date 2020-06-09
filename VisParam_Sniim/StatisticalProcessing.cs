@@ -40,9 +40,6 @@ namespace VisParam_Sniim
                 dispersionErythrocyte.measuredPolarization += (Math.Pow((list[i].measuredPolarization - average.measuredPolarization), 2) / list.Count);
             }
             dispersionErythrocyte.statisticalParameterName = "Дисперсия";
-            dispersionErythrocyte.radius = (dispersionErythrocyte.measuredPolarization);
-            dispersionErythrocyte.measuredSpeed = (dispersionErythrocyte.measuredSpeed);
-            dispersionErythrocyte.measuredPolarization = (dispersionErythrocyte.radius);
             return dispersionErythrocyte;
         }
 
