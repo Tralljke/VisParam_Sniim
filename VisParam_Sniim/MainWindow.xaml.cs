@@ -25,6 +25,7 @@ namespace VisParam_Sniim
         public DataTable VisParam;
         List<double> list = new List<double>();
         public static List<Erythrocyte> DataList = new List<Erythrocyte>();
+        public double[] DDD = new double[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0 };
        
         
         public MainWindow()
@@ -38,7 +39,7 @@ namespace VisParam_Sniim
             string SelectSql = "SELECT * FROM ViscoelasticParamTable";
             VisParam = new DataTable();
             SqlConnection dbConnection = null;
-             
+            
             try
             {
                 dbConnection = new SqlConnection(connectionString);
@@ -125,7 +126,8 @@ namespace VisParam_Sniim
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //LognormalDistribution.GetlogNormal(DDD);
+            MessageBox.Show(Convert.ToString(LognormalDistribution.GetlogNormal(DDD)));
         }
 
         private void GetStatisticalParam_Click(object sender, RoutedEventArgs e)

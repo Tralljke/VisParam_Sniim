@@ -6,15 +6,13 @@ namespace StatisticalProcessingTests
 {
     class LognormalDistributionTest
     {
-        public static double[] TestDataList = new double[3];
-        double[] trueDispersion = new double[] {1,2,3};
+        public static double[] TestDataList = new double[1];
+        double[] trueDispersion = new double[] {0,0005069};
 
         [SetUp]
         public void Init()
         {
-            TestDataList[0] = 1;
-            TestDataList[1] = 2;
-            TestDataList[2] = 3;
+            TestDataList[0] = 2.5;
         }
 
         [Test]
@@ -26,8 +24,6 @@ namespace StatisticalProcessingTests
 
             // assert
             Assert.AreEqual(trueDispersion[0], res[0]);
-            Assert.AreEqual(trueDispersion[1], res[1]);
-            Assert.AreEqual(trueDispersion[2], res[2]);
             Assert.Pass();
         }
     }
