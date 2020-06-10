@@ -25,9 +25,8 @@ namespace VisParam_Sniim
         public DataTable VisParam;
         List<double> list = new List<double>();
         public static List<Erythrocyte> DataList = new List<Erythrocyte>();
-        public double[] DDD = new double[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0 };
-       
-        
+        public static VariableParams test = new VariableParams();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -95,22 +94,27 @@ namespace VisParam_Sniim
             DataRowView rowview = ValuesGrid.SelectedItem as DataRowView;
             SqlConnection dbConnection = new SqlConnection(connectionString);
             SqlCommand deleteCommand = new SqlCommand("delete from ViscoelasticParamTable where ID=@ID", dbConnection);
-            deleteCommand.Parameters.Add(new SqlParameter("@ID", rowview.Row[0].ToString()));
+            if (ValuesGrid.SelectedItems.Count > 0)
+            {
+                deleteCommand.Parameters.Add(new SqlParameter("@ID", rowview.Row[0].ToString()));
 
-            dbConnection.Open();
-            try
+                dbConnection.Open();
+                try
                 {
                     deleteCommand.ExecuteNonQuery();
                 }
-            catch (SqlException ex)
+                catch (SqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-            finally
+                finally
                 {
                     dbConnection.Close();
                     UpdateDB();
                 }
+            }
+            if (rowview == null)
+                MessageBox.Show("Сначала выберите элемент таблицы который хотите удалить");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -126,8 +130,21 @@ namespace VisParam_Sniim
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
-            //LognormalDistribution.GetlogNormal(DDD);
-            MessageBox.Show(Convert.ToString(LognormalDistribution.GetlogNormal(DDD)));
+            
+            DataRowView rowview = ValuesGrid.SelectedItem as DataRowView;
+            if (ValuesGrid.SelectedItems.Count > 0)
+            {
+                test.id = Convert.ToInt32(rowview.Row[0]);
+                test.radius = Convert.ToDouble(rowview.Row[1]);
+                test.theoreticalPolarization = Convert.ToDouble(rowview.Row[2]);
+                test.measuredSpeed = Convert.ToDouble(rowview.Row[3]);
+                test.measuredPolarization = Convert.ToDouble(rowview.Row[4]);
+                Window2 EditParamWin = new Window2();
+                EditParamWin.Show();
+            }
+            if (rowview == null)
+                MessageBox.Show("Сначала выберите элемент таблицы который хотите изменить");
+
         }
 
         private void GetStatisticalParam_Click(object sender, RoutedEventArgs e)

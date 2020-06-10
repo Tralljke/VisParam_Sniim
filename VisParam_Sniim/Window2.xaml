@@ -1,0 +1,49 @@
+﻿<Window x:Class="VisParam_Sniim.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisParam_Sniim"
+        mc:Ignorable="d"
+         Title="Биохимик Добавление Параметров в таблицу" Height="400" Width="450" Loaded="Window_Loaded2" Background="#FFD9EDF6">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10 300 10 8" />
+            <Setter Property="Width" Value="110" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="Background" Value="#FD9460"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="20 10 20 10" />
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal" Grid.Column="0" RenderTransformOrigin="0.288,0.481">
+            <Button x:Name="AddParam" Content="Изменить" Click="EditParam_Click"/>
+            <Button x:Name="CloseWin" Content="Закрыть" Click="CloseWin_Click"/>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"  Width="208" Margin="220,20,0,0" Height="auto" VerticalAlignment="Top">
+            <TextBox Margin="0 15 0 15" Width="150" Height="20" Style="{StaticResource TextBox}" x:Name="IdTextBox" Text="" IsReadOnly="True" />
+            <TextBox Margin="0 15 0 15" Width="150" Height="20" Style="{StaticResource TextBox}" x:Name="RadiusTextBox" Text="" />
+            <TextBox Margin="0 20 0 15" Width="150" Height="20" Style="{StaticResource TextBox}" x:Name="TPolarizationTextBox" Text="" />
+            <TextBox Margin="0 15 0 15" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="SpeedTextBox" Text="" />
+            <TextBox Margin="0 15 0 15" Width="150" Height="22" Style="{StaticResource TextBox}" x:Name="MPolarizationTextBox" Text="" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="220" Margin="0,20,0,0" >
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="15" Text="ID: " />
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="15" Text="Радиус: " />
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="15" Text="Теоретическая &#10;поляризуемость: " />
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="15" Text="Измеренная скорость: " />
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="15" Text="Измеренная &#10;поляризуемость: " />
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace VisParam_Sniim
 {
     public class LognormalDistribution
@@ -31,11 +32,11 @@ namespace VisParam_Sniim
             averageLognormValue = Math.Exp(averageValue + (dispersionValue/2));
             //Считаем дисперсию для lognorm
             dispersionLognormValue = Math.Exp(2 * averageValue + dispersionValue) * (Math.Exp(dispersionValue) - 1);
-            //Считаем логнормальное распределение
+            //Считаем плотность вероятности распределение
             for (int i = 0; i < list.Length; i++)
             {
                 if (list[i] > 0 && dispersionLognormValue !=0)
-                    logNormalDistribution[i] = ((Math.Exp(-(Math.Pow((Math.Log10(list[i]) - averageLognormValue),2) / (2 * dispersionLognormValue)))) / (list[i] * (Math.Sqrt(dispersionLognormValue)) * (Math.Sqrt(2 * Math.PI))));
+                    logNormalDistribution[i] = ((Math.Exp(-(Math.Pow((Math.Log10(list[i]) - averageLognormValue) / ( Math.Sqrt(dispersionLognormValue)),2))/2)) / (list[i] * (Math.Sqrt(dispersionLognormValue)) * (Math.Sqrt(2 * Math.PI))));
                 else
                     logNormalDistribution[i] = 0;
             }
