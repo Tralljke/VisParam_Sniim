@@ -30,7 +30,7 @@
                 <DataGridTextColumn  Header="Радиус частицы, мкм"  MinWidth="120" Width="*" Binding="{Binding radius}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Теоретическая &#10;поляризуемость, пм³"  MinWidth="120" Width="*" Binding="{Binding theoreticalPolarization}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn  Header="Измеренная &#10;скорость, м/c"  MinWidth="120" Width="*" Binding="{Binding measuredSpeed}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn  Header="Измеренная &#10;поляризуемость, пм³"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  Header="Измеренная &#10;поляризуемость, м³"  MinWidth="120" Width="*" Binding="{Binding measuredPolarization}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
 
         </DataGrid>

@@ -69,7 +69,7 @@ namespace VisParam_Sniim
             }
             finally
             {
-                MessageBox.Show("Значения успешно добавлены");
+                MessageBox.Show("Значения успешно изменены");
 
             }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisParam_Sniim"
         mc:Ignorable="d"
-         Title="Биохимик Добавление Параметров в таблицу" Height="400" Width="450" Loaded="Window_Loaded2" Background="#FFD9EDF6">
+         Title="Биохимик Изменение параметров в таблице" Height="400" Width="450" Loaded="Window_Loaded2" Background="#FFD9EDF6">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10 300 10 8" />
